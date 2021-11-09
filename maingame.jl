@@ -30,7 +30,7 @@ function interface(word,guess,guessed,alphabet)
     println("           Guess: ",guess)
     guessedlist = collect(guessed) #list guesses
     inwordlist = collect(word)
-    misses = collect(replace(guessedlist,inwordlist =>""))
+    misses = join([replace(guessedlist,inwordlist =>"")],"")
     println("           Misses: ",misses)
 end
 
@@ -39,17 +39,20 @@ end
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 word = wordchoice()
 guessed = ""
-println(displaydiscovery(word,alphabet,guessed))
 guess=getguess(alphabet)
 guessed = join(guessed,guess)
-print(guessed)
-interface(word,guess,guessed,alphabet)
 
+interface(word,guess,guessed,alphabet)
+guess=getguess(alphabet)
+guessed = join([guessed,guess],"")
+print("guessed:",guessed)
+
+interface(word,guess,guessed,alphabet)
 
 
 # print(guessinword(word,guess))
 
-#interface = "  ____\n |    |\n\O/   |\n\n |    |\n/ \   |\n  ____|____"
+# interface = "  ____\n |    |\n\O/   |\n\n |    |\n/ \   |\n  ____|____"
 
 
 
